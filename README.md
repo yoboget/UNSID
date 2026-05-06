@@ -3,13 +3,6 @@
 
 Official code repository for the paper: Unrestrained Simplex Denoising
 
-<p align="center">
-<img src="misc/combined_graphs.gif" width="400"> <img src="misc/combined_image.gif" width="400">
-</p>
-
-<p align="center">
-<img src="misc/validity.png" width="250"> <img src="misc/nspdk.png" width="250"> <img src="misc/fcd.png" width="250"> 
-</p>
 
 ## Installation
 
@@ -32,6 +25,10 @@ For the evaluation of generic graph generation tasks, run the following command 
 cd graph_stats/orca 
 g++ -O2 -std=c++11 -o orca orca.cpp
 ```
+
+## Config
+
+The config files for each experiment (with default parameter used in the paper) are in the config folder. 
 
 ## Training
 
