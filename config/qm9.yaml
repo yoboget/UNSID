@@ -1,0 +1,54 @@
+
+data:
+  max_num_nodes: 9
+
+training:
+  batch_size: 2048
+  learning_rate: 0.0005
+  lr_decay: 0.5
+  decay_iteration: 100_000
+  betas:
+    beta1: 0.9
+    beta2: 0.999
+  epochs: 1000
+  val_size: 1000
+  #dropout: 0
+
+model:
+  architecture: 'digress'
+  nhf: 256
+  edge_node_ratio: 1
+  n_layers: 8
+  mlp_n_layers: 3
+  normalization: layer_norm
+  T: 1024
+  prior: dirch # 'dirch = dirichlet' 'masking', 'absorbing', 'marginal'
+  scale: 3.0
+
+extra_features:
+  spectral_embeddings: False
+  k: 5
+  graph_size: True
+  molecular_feat: False
+  cycles: False
+  rrwp: False
+  discrete_features: False
+
+sampling:
+  id: False
+  node_alpha: 1.0
+  edge_alpha: 1.0
+
+conditioning:
+  classifier_guidance: False
+  classifier_free_guidance: False
+  lambda_cfg: 1.0
+  lambda_guidance: 1.0
+
+log:
+  n_loggin_steps: 100
+  n_loggin_epochs: 20
+  n_val_samples: 10000
+  sampling_batch_size: 10000
+  n_samples_generation: 10000
+  save_graphs: False

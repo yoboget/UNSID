@@ -1,0 +1,15 @@
+wandb: Currently logged in as: yobo. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.25.1 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.15.3
+wandb: Run data is saved locally in /home/users/b/boget3/dirisid/wandb/run-20260327_191516-44qes2f3
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run rich-salad-33
+wandb: ⭐️ View project at https://wandb.ai/yobo/Dirisid_qm9H
+wandb: 🚀 View run at https://wandb.ai/yobo/Dirisid_qm9H/runs/44qes2f3
+/opt/conda/lib/python3.10/site-packages/torch/nn/modules/activation.py:1144: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at /opt/conda/conda-bld/pytorch_1678411187366/work/aten/src/ATen/native/transformers/attention.cpp:150.)
+  return torch._native_multi_head_attention(
+INFO:    Terminating squashfuse_ll after timeout
+INFO:    Timeouts can be caused by a running background process
+[2026-03-27T19:53:06.930] error: Detected 1 oom_kill event in StepId=7425500.0. Some of the step tasks have been OOM Killed.
+srun: error: gpu048: task 0: Out Of Memory
