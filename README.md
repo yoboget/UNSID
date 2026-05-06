@@ -1,7 +1,7 @@
-# Simple and Critical Iterative Denoising
-### Discrete diffusion: Better, Faster, Simpler
+#  Unrestrained Simplex Denoising for Discrete Data
+### Simplex diffusion
 
-Official code repository for the paper: [Simple and Critical Iterative Denoising](https://arxiv.org/html/2503.21592)
+Official code repository for the paper: Unrestrained Simplex Denoising
 
 <p align="center">
 <img src="misc/combined_graphs.gif" width="400"> <img src="misc/combined_image.gif" width="400">
@@ -41,12 +41,10 @@ Our model takes 4 main arguments:
 
 ```--work_type``` (str.) Select 'train' or 'sample'.
 
-```--train_model``` and ```--train_critic``` (bool.) If train_model is False and train_critic is True, 
-denoiser_dir is required. 
+```--train_model``` (bool.) 
 
 ```--wandb``` Weight and bias 'init' argument ('online', 'offline', 'disabled')
 
-```--denoiser_dir``` and ```--critic_dir``` (str.) Path to directory. 
 
 
 ## Datasets

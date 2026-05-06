@@ -1,6 +1,7 @@
 import os
 import networkx as nx
 import torch
+import numpy as np
 from torch_geometric.utils import to_dense_batch, to_dense_adj, to_networkx
 
 
@@ -93,3 +94,37 @@ def get_conditional_input(cond, X_noisy, mask, max_num_nodes, device, training=T
     is_cond = is_cond.repeat(1, max_num_nodes).unsqueeze(-1)
     cond = cond.repeat(max_num_nodes, 1).reshape(*X_noisy.shape[:2], -1) * mask.unsqueeze(-1)
     return torch.cat((X_noisy, cond, is_cond), dim=-1)
+
+def print_eval(runs, dataset):
+    keys = runs[0].keys()
+    latex_format = {}
+    for key in keys:
+        val = []
+        for run in runs:
+            val.append(run[key])
+        mean = np.asarray(val).mean()
+        std = np.asarray(val).std()
+        print(f'mean {key}: {mean}')
+        print(f'std {key}: {std}')
+        if key in ['valid', 'unique', 'novel']:
+            mean *= 100
+            std *= 100
+            latex_format[key] = f'${mean:.2f} \pm {std:.2f}$'
+        elif key in ['nspdk', 'degree', 'cluster', 'orbit', 'spectral']:
+            mean *= 1000
+            std *= 1000
+            latex_format[key] = f'${mean:.3f} \pm {std:.3f}$'
+        else:
+            latex_format[key] = f'${mean:.3f} \pm {std:.3f}$'
+
+    if dataset in ['qm9', 'qm9_cc', 'qm9H', 'zinc']:
+        print(
+            f'{latex_format["valid"]} &  {latex_format["fcd"]} & {latex_format["nspdk"]} & {latex_format["unique"]} & {latex_format["novel"]} \\')
+    else:
+        if 'orbit' in latex_format.keys():
+            latex_format["valid"], latex_format['novel'] = 0, 0
+            print(
+                f'{latex_format["valid"]} &  {latex_format["degree"]} & {latex_format["cluster"]} & {latex_format["orbit"]}& {latex_format["spectral"]} & {latex_format["novel"]} \\')
+        else:
+            print(
+                f'{latex_format["valid"]} &  {latex_format["degree"]} & {latex_format["cluster"]} & - & {latex_format["spectral"]} & {latex_format["novel"]} \\')
